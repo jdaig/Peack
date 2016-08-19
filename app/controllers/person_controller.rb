@@ -31,9 +31,23 @@ class PersonController < ApplicationController
   end
 
   def index
+    @person = current_person_by_user
     #aqui se pondra los repute
   end
 
+  def search
+    @person = Person.new
+  end
+
+  def find
+    @person_array = []
+    Person.all.each{|person|
+      if person.name == search_params[:name] || person.ocupation == search_params[:ocupation]
+        @person_array << person
+      end
+    }
+    @person_array
+  end
 private
   def current_person_by_user
     current_user.person
@@ -42,5 +56,9 @@ private
   def info_params #parámetros fuertes para evitar la vulnerabilidad de asignación de masas 
       params.require(:person).permit(:name, :lastname, :born, :ocupation, 
                                    :soc_stat, :page, :description, :user_id)
+  end
+
+  def search_params
+    params.require(:person).permit(:name, :ocupation)
   end
 end

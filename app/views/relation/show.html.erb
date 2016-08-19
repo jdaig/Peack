@@ -1,10 +1,16 @@
+<% provide(:title, 'Peack') %>
+<h1>Peack</h1>
 
 <div class="row">
-  <div class="small-2 large-2 columns">
+  <div class="col-md-6 col-md-offset-3">
     <%= gravatar_for User.find(@person.user_id) %>
+    <%= @person.name %>
+    <%= @person.lastname %><br>
+    <%= @person.ocupation %>
+
   </div>
-  <br>
-  <div class="small-2 large-4 columns">
+  <br><br>
+  <div class="col-md-6 col-md-offset-3">
     <% if current_user %>
       Punctuality: <%= rating_for @person, "punctuality", disable_after_rate: false, star: 10 %>
       <br>
@@ -14,5 +20,6 @@
     <% end %>
   </div>
 </div>
-
+<br><br>
+  <%= link_to "Do it!", company_index_path, class: "btn btn-primary btn-block" %>
 <!-- Checar los rating, aun tienen problemas -->

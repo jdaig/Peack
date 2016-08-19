@@ -1,0 +1,25 @@
+<% provide(:title, 'Peack rate') %>
+<h1>Peack</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= gravatar_for User.find(@company.user_id) %>
+    <%= @company.name_co %><br>
+    <%= @company.ceo_co %><br>
+    <%= @company.type_co %><br>
+
+  </div>
+  <br>
+  <div class="col-md-6 col-md-offset-3">
+    <% if current_user %>
+      Punctuality:  <%= Rate.find_by(rateable_id:@company.id, dimension:"punctuality").stars %><br>
+      	<%= imdb_style_rating_for @company, current_user %>
+      <br>
+      Service: <%= Rate.find_by(rateable_id:@company.id, dimension:"service").stars %><br>
+      <%= imdb_style_rating_for @company, current_user %>
+      <br>
+      Quality: <%= Rate.find_by(rateable_id:@company.id, dimension:"quality").stars %><br>
+      <%= imdb_style_rating_for @company, current_user %>
+    <% end %>
+  </div>
+</div>

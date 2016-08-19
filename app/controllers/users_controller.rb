@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   end
 
   def find
-    
+    @user = User.find_by(email: search_params[:email])
   end
 
   private
@@ -89,4 +89,8 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
+
+    def search_params
+    params.require(:user).permit(:email)
+  end
 end

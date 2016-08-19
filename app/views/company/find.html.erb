@@ -1,0 +1,21 @@
+<% provide(:title, "Find service") %>
+<h1>Services found</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <%if @company_array%>
+  <%@company_array.each do |company|%>
+  <br><br>
+    <h3>
+    	<% user = User.find(company.user_id)%>
+        <%= gravatar_for  user%>
+        <%= link_to company.name_co, user %><br>
+        <%= company.type_co %><br>
+      </h3>
+   <%end%>
+  <%else%>
+  	<h1>Without matches</h1>
+        <%= link_to "Back", search_service_path, class: "btn btn-primary"  %>
+  <%end%>
+  </div>
+</div>

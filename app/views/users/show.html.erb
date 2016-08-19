@@ -1,15 +1,16 @@
 <% if @user.person%>
 <% provide(:title, @user.person.name) %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-6 col-md-offset-3">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.person.name %><br><br>
+        <%= gravatar_for @user ,size:170%>
+        <%= @user.person.name %>
+        <%= @user.person.lastname %><br>
       </h1>
       <h4>
         <%= link_to "Information", person_path %><br><br>
-        <%= link_to "Reputation", person_path %>
+        <%= link_to "Reputation", person_index_path %>
       </h4> 
     </section>
   </aside>
@@ -17,18 +18,16 @@
 <% else%>
 <% provide(:title, @user.company.name_co) %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-6 col-md-offset-3">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.company.name_co %><br><br>
+        <%= gravatar_for @user,size:170 %>
+        <%= @user.company.name_co %><br>
       </h1>
       <h4>
         <%= link_to "Information", company_path %><br><br>
         <%= link_to "Employees", company_index_path %><br><br>
-        <%= link_to "Reputation", company_path %><br><br>
-        <%= link_to "New project announcements", company_path %><br><br>
-        <%= link_to "Post a proyect need", company_path %>
+        <%= link_to "Reputation", reputation_path %><br><br>
       </h4>
     </section>
   </aside>

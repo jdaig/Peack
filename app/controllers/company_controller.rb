@@ -35,6 +35,24 @@ class CompanyController < ApplicationController
     #aqui se pondra los repute
   end
 
+  def reputation
+    @company = current_company_by_user
+  end
+
+  def search
+    @company = Company.new
+  end
+
+  def find
+    @company_array = []
+    Company.all.each{|company|
+      if company.name_co == search_params[:name_co] || company.type_co == search_params[:type_co]
+        @company_array << company
+      end
+    }
+    @company_array
+  end
+
 private
   def current_company_by_user
     current_user.company
@@ -43,5 +61,9 @@ private
   def infoco_params #parámetros fuertes para evitar la vulnerabilidad de asignación de masas 
       params.require(:company).permit(:name_co, :ceo_co, :page, 
                                       :type_co, :latitud, :longitud, :description, :user_id)
+  end
+
+  def search_params
+    params.require(:company).permit(:name_co, :type_co)
   end
 end
