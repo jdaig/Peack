@@ -31,7 +31,7 @@ class PersonController < ApplicationController
   end
 
   def index
-    @person = current_person_by_user
+    @user = User.find(params[:id])
     #aqui se pondra los repute
   end
 

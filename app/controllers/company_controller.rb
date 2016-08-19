@@ -4,7 +4,9 @@ class CompanyController < ApplicationController
   end
 
   def show
-    @company = current_company_by_user
+    #@company = current_company_by_user
+    @user = User.find(params[:id])
+
   end
 
   def create
@@ -36,7 +38,7 @@ class CompanyController < ApplicationController
   end
 
   def reputation
-    @company = current_company_by_user
+    @user = User.find(params[:id])
   end
 
   def search

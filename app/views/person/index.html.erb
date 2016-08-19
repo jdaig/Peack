@@ -1,6 +1,6 @@
 <% provide(:title, 'Peack rate') %>
 <h1>Peack rate</h1>
-
+<%@person = @user.person %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= gravatar_for User.find(@person.user_id) %>
@@ -9,7 +9,7 @@
   </div>
   <br>
   <div class="col-md-6 col-md-offset-3">
-    <% if current_user && Rate.find_by(rateable_id: @person.id) %>
+    <% if Rate.find_by(rateable_type: "Person", rateable_id:@person.id) %>
       Punctuality:  <%= Rate.find_by(rateable_id:@person.id, dimension:"punctuality").stars %><br>
       	<%= imdb_style_rating_for @person, current_user %>
       <br>
@@ -18,6 +18,8 @@
       <br>
       Personal image: <%= Rate.find_by(rateable_id:@person.id, dimension:"personal_image").stars %><br>
        <%= imdb_style_rating_for @person, current_user %>
+    <%else%>
+      <h3>Even without Peack</h3>
     <% end %>
   </div>
 </div>

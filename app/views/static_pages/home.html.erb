@@ -8,6 +8,7 @@
   <h2>
     This is the home page for the simple experience of human resources.
   </h2>
-
+  <%unless logged_in?%>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <%end%>
 </div>

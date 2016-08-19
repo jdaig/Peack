@@ -10,7 +10,7 @@
       </h1>
       <h4>
         <%= link_to "Information", person_path %><br><br>
-        <%= link_to "Reputation", person_index_path %>
+        <%= link_to "Reputation", person_index_path(@user.id) %>
       </h4> 
     </section>
   </aside>
@@ -26,8 +26,10 @@
       </h1>
       <h4>
         <%= link_to "Information", company_path %><br><br>
+        <%if current_user == @user%>
         <%= link_to "Employees", company_index_path %><br><br>
-        <%= link_to "Reputation", reputation_path %><br><br>
+        <%end%>
+        <%= link_to "Reputation", reputation_path(@user.id) %><br><br>
       </h4>
     </section>
   </aside>
