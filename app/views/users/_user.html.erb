@@ -1,0 +1,19 @@
+<li>
+  <%= gravatar_for user, size: 50 %>
+  <% if user.company%>
+  <%= link_to user.company.name_co, user %>
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %><br>
+  <%= user.company.type_co%>
+  <% elsif user.person%>
+  <%= link_to user.person.name + " " + user.person.lastname, user %>
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %><br>
+  <%= user.person.ocupation%>
+  <%end%>
+</li>
+

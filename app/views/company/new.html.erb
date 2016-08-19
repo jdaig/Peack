@@ -1,0 +1,37 @@
+<% provide(:title, 'Information') %>
+<h1>Company Information</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@kind, url: infoconew_path) do |f| %> <!-- Es necesario generar una ruta que lleve a la creacion de la informacion -->
+      <!-- Verificar que el render de error menssages nos combiene -->
+
+      <%= f.label "Business name" %>
+      <%= f.text_field :name_co, class: 'form-control' %>
+      
+      <%= f.label :ceo_co %>
+      <%= f.text_field :ceo_co, class: 'form-control' %>
+      
+      <%= f.label :page %>
+      <%= f.text_field :page, class: 'form-control' %>
+
+      <%= f.label "Type of company" %>
+      <%= f.text_field :type_co, class: 'form-control' %>
+      
+      <%= f.hidden_field :latitud, class: 'form-control' %>
+      <%= f.hidden_field :longitud, class: 'form-control' %>
+      
+      <%= render 'maps/geoloc_map' %>
+      
+      <%= f.button "Localizar", type:"button", onclick:"localizar()", class: "btn btn-primary" %><br><br>
+      
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+      
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+      <%= f.submit "Save Information", class: "btn btn-primary" %>
+
+    <% end %>
+   </div>
+

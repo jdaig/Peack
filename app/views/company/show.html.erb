@@ -1,0 +1,39 @@
+<% provide(:title, 'Information') %>
+<h1>Company Information</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="gravatar_company">
+      <%= gravatar_for current_user %>
+    </div>
+    <section class="user_info">
+      <h2>
+        <em><b>Company:</b></em>
+        <%= @company.name_co%><br><br>
+
+        <em><b>CEO:</b></em>
+        <%= @company.ceo_co%><br><br>
+
+        <em><b>Company page:</b></em>
+        <%= @company.page%><br><br>
+
+        <em><b>Type of company:</b></em>
+        <%= @company.type_co%><br><br>
+
+        <em><b>Description:</b></em>
+        <%= @company.description%><br><br>
+
+        <em><b>Member since:</b></em>
+        <%= @company.created_at%><br><br>
+
+        <%= form_for(@company) do |f| %>
+        <%= f.hidden_field :latitud, value: @company.latitud %>
+        <%= f.hidden_field :longitud, value: @company.longitud %>
+        <%= render 'maps/show_map' %>
+      <%end%>
+      </h2>
+    </section>
+  </aside>
+  <%= link_to "Edit", edit_company_path(@company), class: "btn btn-primary btn-block" %>
+  
+</div>

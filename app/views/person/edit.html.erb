@@ -1,0 +1,37 @@
+<% provide(:title, 'Edit Personal Information') %>
+<h1>Update your profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@person) do |f| %>
+      <%= render 'shared/error_messages_person' %>
+
+      <%= f.label "Firstname" %>
+      <%= f.text_field :name, class: 'form-control' %>
+      
+      <%= f.label :lastname %>
+      <%= f.text_field :lastname, class: 'form-control' %>
+      
+      <%= f.label "Birthday" %>
+      <%= f.text_field :born, class: 'form-control' %>
+
+      <%= f.label :ocupation %>
+      <%= f.text_field :ocupation, class: 'form-control' %>
+      
+      <%= f.label "Social stat" %>
+      <%= f.text_field :soc_stat, class: 'form-control' %>
+      
+      <%= f.label :page %>
+      <%= f.text_field :page, class: 'form-control' %>
+      
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+   
+</div>
+

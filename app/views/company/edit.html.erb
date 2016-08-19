@@ -1,0 +1,38 @@
+<% provide(:title, 'Edit Information') %>
+<h1>Update company profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@company) do |f| %>
+      <%= render 'shared/error_messages_company' %>
+
+      <%= f.label "Company name" %>
+      <%= f.text_field :name_co, class: 'form-control' %>
+      
+      <%= f.label :ceo_co %>
+      <%= f.text_field :ceo_co, class: 'form-control' %>
+      
+      <%= f.label :page %>
+      <%= f.text_field :page, class: 'form-control' %>
+
+      <%= f.label "Type of company" %>
+      <%= f.text_field :type_co, class: 'form-control' %>
+      
+
+      <%= f.hidden_field :latitud, class: 'form-control', value: @company.latitud %>
+      <%= f.hidden_field :longitud, class: 'form-control', value: @company.longitud %>
+      
+      <%= render 'maps/geoloc_map' %><br>
+    
+      <%= f.button "Localizar", type:"button", onclick:"localizar()", class: "btn btn-primary" %><br><br>
+      
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+      
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+   
+</div>

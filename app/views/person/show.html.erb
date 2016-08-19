@@ -1,0 +1,39 @@
+<% provide(:title, 'Personal Information') %>
+<h1>Personal Information</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="gravatar_person">
+      <%= gravatar_for current_user %>
+    </div>
+    <section class="user_info">
+      <h2>
+        <em><b>Firstname:</b></em>
+        <%= @person.name%><br><br>
+
+        <em><b>Lastname:</b></em>
+        <%= @person.lastname%><br><br>
+
+        <em><b>Birthday:</b></em>
+        <%= @person.born%><br><br>
+
+        <em><b>Ocupation:</b></em>
+        <%= @person.ocupation%><br><br>
+
+        <em><b>Social Stat:</b></em>
+        <%= @person.soc_stat%><br><br>
+
+        <em><b>Personal page:</b></em>
+        <%= @person.page%><br><br>
+
+        <em><b>Description:</b></em>
+        <%= @person.description%><br><br>
+
+        <em><b>Member since:</b></em>
+        <%= @person.created_at%><br><br>
+      </h2>
+    </section>
+  </aside>
+  <%= link_to "Edit", edit_person_path(@person), class: "btn btn-primary btn-block" %>
+  
+</div>

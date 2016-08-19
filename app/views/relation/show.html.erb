@@ -1,0 +1,18 @@
+
+<div class="row">
+  <div class="small-2 large-2 columns">
+    <%= gravatar_for User.find(@person.user_id) %>
+  </div>
+  <br>
+  <div class="small-2 large-4 columns">
+    <% if current_user %>
+      Punctuality: <%= rating_for @person, "punctuality", disable_after_rate: false, star: 10 %>
+      <br>
+      Performance: <%= rating_for @person, "performance", disable_after_rate: false, star: 10 %>
+      <br>
+      Personal image: <%= rating_for @person, "personal_image", disable_after_rate: false, star: 10 %>
+    <% end %>
+  </div>
+</div>
+
+<!-- Checar los rating, aun tienen problemas -->
